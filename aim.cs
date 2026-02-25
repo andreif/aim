@@ -101,12 +101,16 @@ public class AimDotOverlay : Form
         e.Graphics.FillRectangle(Brushes.White, cx - 1, cy + 1, 2, 2);
         e.Graphics.FillRectangle(Brushes.Red, cx - 1, cy - 1, 2, 2);
 
-        for (int i = 1; i <= 5; i++)
+        for (int i = 1; i <= 3; i++)
         {
-            int y = cy + i * 20;
-            int w = (i + 1) * 2;
-            e.Graphics.FillRectangle(Brushes.White, cx - w / 2, y + 1, w, 1);
-            e.Graphics.FillRectangle(Brushes.Red, cx - w / 2, y, w, 1);
+            int y = cy + i * 40;
+            int half = 1 + i * 2;
+            e.Graphics.FillRectangle(Brushes.White, cx - half, y + 1, 2, 1);
+            e.Graphics.FillRectangle(Brushes.Red, cx - half, y, 2, 1);
+            e.Graphics.FillRectangle(Brushes.White, cx - 1, y + 1, 2, 1);
+            e.Graphics.FillRectangle(Brushes.Red, cx - 1, y, 2, 1);
+            e.Graphics.FillRectangle(Brushes.White, cx + half - 2, y + 1, 2, 1);
+            e.Graphics.FillRectangle(Brushes.Red, cx + half - 2, y, 2, 1);
         }
     }
 
