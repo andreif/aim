@@ -94,6 +94,13 @@ public class AimDotOverlay : Form
 
         e.Graphics.FillRectangle(Brushes.White, cx - 1, cy + 1, 2, 2);
         e.Graphics.FillRectangle(Brushes.Red, cx - 1, cy - 1, 2, 2);
+
+        for (int i = 1; i <= 5; i++)
+        {
+            int y = cy + i * 20;
+            e.Graphics.FillRectangle(Brushes.White, cx - 5, y + 1, 10, 1);
+            e.Graphics.FillRectangle(Brushes.Red, cx - 5, y, 10, 1);
+        }
     }
 
     // Listen for the registered hotkey message
