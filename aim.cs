@@ -101,7 +101,7 @@ public class AimDotOverlay : Form
         e.Graphics.FillRectangle(Brushes.White, cx - 1, cy + 1, 2, 2);
         e.Graphics.FillRectangle(Brushes.Red, cx - 1, cy - 1, 2, 2);
 
-        for (int i = 1; i <= 3; i++)
+        for (int i = 1; i <= 5; i++)
         {
             int y = cy + i * 40;
             int half = 1 + i * 2;
