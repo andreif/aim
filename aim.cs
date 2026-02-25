@@ -45,6 +45,11 @@ public class AimDotOverlay : Form
     [DllImport("user32.dll", SetLastError = true)]
     static extern bool UnregisterHotKey(IntPtr hWnd, int id);
 
+    private const int LWA_ALPHA = 0x2;
+
+    [DllImport("user32.dll", SetLastError = true)]
+    static extern bool SetLayeredWindowAttributes(IntPtr hwnd, uint crKey, byte bAlpha, uint dwFlags);
+
     public AimDotOverlay()
     {
         FormBorderStyle = FormBorderStyle.None;
@@ -65,6 +70,7 @@ public class AimDotOverlay : Form
             var ex = GetWindowLong(Handle, GWL_EXSTYLE);
             ex |= WS_EX_LAYERED | WS_EX_TRANSPARENT | WS_EX_NOACTIVATE;
             SetWindowLong(Handle, GWL_EXSTYLE, ex);
+            SetLayeredWindowAttributes(Handle, 0, 179, LWA_ALPHA);
 
             // Register Ctrl+Shift+X as toggle hotkey
             RegisterHotKey(Handle, HOTKEY_ID, MOD_CONTROL | MOD_SHIFT, VK_X);
@@ -98,8 +104,9 @@ public class AimDotOverlay : Form
         for (int i = 1; i <= 5; i++)
         {
             int y = cy + i * 20;
-            e.Graphics.FillRectangle(Brushes.White, cx - 5, y + 1, 10, 1);
-            e.Graphics.FillRectangle(Brushes.Red, cx - 5, y, 10, 1);
+            int w = (i + 1) * 2;
+            e.Graphics.FillRectangle(Brushes.White, cx - w / 2, y + 1, w, 1);
+            e.Graphics.FillRectangle(Brushes.Red, cx - w / 2, y, w, 1);
         }
     }
 
