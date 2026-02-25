@@ -92,8 +92,8 @@ public class AimDotOverlay : Form
         int cx = Width / 2;
         int cy = Height / 2;
 
-        e.Graphics.FillRectangle(Brushes.White, cx, cy + 1, 1, 1);
-        e.Graphics.FillRectangle(Brushes.Red, cx, cy, 1, 1);
+        e.Graphics.FillRectangle(Brushes.White, cx - 1, cy + 1, 2, 2);
+        e.Graphics.FillRectangle(Brushes.Red, cx - 1, cy - 1, 2, 2);
     }
 
     // Listen for the registered hotkey message
