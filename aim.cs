@@ -52,8 +52,7 @@ public class AimDotOverlay : Form
         TopMost = true;
         StartPosition = FormStartPosition.Manual;
 
-        // Cover all screens (primary only by default). If you want multi-monitor, loop screens.
-        var bounds = Screen.PrimaryScreen.Bounds;
+        var bounds = Screen.PrimaryScreen?.Bounds ?? Screen.AllScreens[0].Bounds;
         Bounds = bounds;
 
         // BackColor used as the transparent key
