@@ -85,33 +85,15 @@ public class AimDotOverlay : Form
         SetStyle(ControlStyles.Selectable, false);
     }
 
-    // Settings for the dot
-    private readonly int dotRadius = 6;            // pixels (change to taste)
-    private readonly Color dotColor = Color.Red;   // change to taste
-    private readonly bool drawOutline = true;
-    private readonly int outlineThickness = 2;
-    private readonly Color outlineColor = Color.Black;
-
     protected override void OnPaint(PaintEventArgs e)
     {
         base.OnPaint(e);
 
-        // Center point (primary screen)
         int cx = Width / 2;
         int cy = Height / 2;
 
-        // High-quality rendering
-        e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-
-        if (drawOutline)
-        {
-            using var pen = new Pen(outlineColor, outlineThickness);
-            e.Graphics.DrawEllipse(pen, cx - dotRadius - outlineThickness, cy - dotRadius - outlineThickness,
-                (dotRadius + outlineThickness) * 2, (dotRadius + outlineThickness) * 2);
-        }
-
-        using var brush = new SolidBrush(dotColor);
-        e.Graphics.FillEllipse(brush, cx - dotRadius, cy - dotRadius, dotRadius * 2, dotRadius * 2);
+        e.Graphics.FillRectangle(Brushes.White, cx, cy + 1, 1, 1);
+        e.Graphics.FillRectangle(Brushes.Red, cx, cy, 1, 1);
     }
 
     // Listen for the registered hotkey message
