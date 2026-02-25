@@ -45,6 +45,7 @@ public class AimDotOverlay : Form
     [DllImport("user32.dll", SetLastError = true)]
     static extern bool UnregisterHotKey(IntPtr hWnd, int id);
 
+    private const int LWA_COLORKEY = 0x1;
     private const int LWA_ALPHA = 0x2;
 
     [DllImport("user32.dll", SetLastError = true)]
@@ -62,7 +63,6 @@ public class AimDotOverlay : Form
 
         // BackColor used as the transparent key
         BackColor = Color.Lime;
-        TransparencyKey = Color.Lime;
 
         DoubleBuffered = true;
         // Make the window non-activating and click-through after shown
@@ -70,7 +70,7 @@ public class AimDotOverlay : Form
             var ex = GetWindowLong(Handle, GWL_EXSTYLE);
             ex |= WS_EX_LAYERED | WS_EX_TRANSPARENT | WS_EX_NOACTIVATE;
             SetWindowLong(Handle, GWL_EXSTYLE, ex);
-            SetLayeredWindowAttributes(Handle, 0, 179, LWA_ALPHA);
+            SetLayeredWindowAttributes(Handle, 0x0000FF00, 179, LWA_COLORKEY | LWA_ALPHA);
 
             // Register Ctrl+Shift+X as toggle hotkey
             RegisterHotKey(Handle, HOTKEY_ID, MOD_CONTROL | MOD_SHIFT, VK_X);
