@@ -1,6 +1,6 @@
 # Aim
 
-Transparent, click-through crosshair overlay for Windows. Draws a 1px red dot at the center of the primary screen with a white dot below for contrast. Does not read or inject into any process.
+Transparent, click-through crosshair overlay for Windows. Draws a red/white dot at the center of the primary screen with a drop scale below. Does not read or inject into any process.
 
 ## Controls
 
